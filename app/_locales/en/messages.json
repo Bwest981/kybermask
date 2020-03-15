@@ -1565,6 +1565,9 @@
   "viewOnEtherscan": {
     "message": "View on Etherscan"
   },
+  "tokenSwap": {
+    "message": "Token Swap"
+  },
   "retryTransaction": {
     "message": "Retry Transaction"
   },

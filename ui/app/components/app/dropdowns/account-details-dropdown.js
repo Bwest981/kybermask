@@ -32,6 +32,11 @@ function mapDispatchToProps (dispatch) {
     viewOnEtherscan: (address, network, rpcPrefs) => {
       global.platform.openWindow({ url: genAccountLink(address, network, rpcPrefs) })
     },
+    launchTokenSwap: () => {
+      //global.platform.openWindow({ url: 'https://kyberswap.com/swap/eth-knc'})
+      dispatch(actions.showModal({ name: 'TOKEN_SWAPS' }))
+      console.log("Launch Token Sawp")
+    },
     showRemoveAccountConfirmationModal: (identity) => {
       return dispatch(actions.showModal({ name: 'CONFIRM_REMOVE_ACCOUNT', identity }))
     },
@@ -57,6 +62,7 @@ AccountDetailsDropdown.prototype.render = function () {
     keyrings,
     showAccountDetailModal,
     viewOnEtherscan,
+    launchTokenSwap,
     showRemoveAccountConfirmationModal,
     rpcPrefs,
   } = this.props
@@ -104,6 +110,22 @@ AccountDetailsDropdown.prototype.render = function () {
       },
       text: this.context.t('accountDetails'),
       icon: h(`img`, { src: 'images/info.svg', style: { height: '15px' } }),
+    }),
+    h(Item, {
+      onClick: (e) => {
+        e.stopPropagation()
+        launchTokenSwap()
+        this.context.metricsEvent({
+          eventOpts: {
+            category: 'Navigation',
+            action: 'Account Options',
+            name: 'Clicked Token Swap',
+          },
+        })
+        this.props.onClose()
+      },
+      text: this.context.t('tokenSwap'),
+      icon: h(`img`, { src: 'images/icons/swap_white.svg', style: { height: '15px' } }),
     }),
     h(Item, {
       onClick: (e) => {

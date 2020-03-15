@@ -3114,5 +3114,6 @@ function rejectPrompt (id) {
   return background.rejectPrompt(id)
 }
 
-window.deletePlugin = removePlugin
 
+
+window.deletePlugin = removePlugin

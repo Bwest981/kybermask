@@ -12,6 +12,7 @@ const { ENVIRONMENT_TYPE_POPUP } = require('../../../../../app/scripts/lib/enums
 // Modal Components
 const DepositEtherModal = require('./deposit-ether-modal')
 import AccountDetailsModal from './account-details-modal'
+import TokenSwapsModal from './token-swaps'
 const ExportPrivateKeyModal = require('./export-private-key-modal')
 const HideTokenConfirmationModal = require('./hide-token-confirmation-modal')
 const NotifcationModal = require('./notification-modal')
@@ -150,6 +151,12 @@ const MODALS = {
   ACCOUNT_DETAILS: {
     contents: [
       h(AccountDetailsModal, {}, []),
+    ],
+    ...accountModalStyle,
+  },
+  TOKEN_SWAPS: {
+    contents: [
+      h(TokenSwapsModal, {}, []),
     ],
     ...accountModalStyle,
   },
